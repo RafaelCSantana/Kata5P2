@@ -1,12 +1,12 @@
 package kata5p2.main;
 
-import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 import kata5p2.model.Histogram;
 import kata5p2.model.Mail;
 import kata5p2.view.HistogramDisplay;
 import kata5p2.view.MailHistogramBuilder;
-import kata5p2.view.MailListReader;
+import kata5p2.view.MailListReaderDDBB;
 
 public class Kata5P2 {
 
@@ -15,14 +15,14 @@ public class Kata5P2 {
     private List<Mail> mailList;
     private HistogramDisplay histoDisplay;
     
-    public static void main(String[] args) throws IOException {
-        Kata5P2 kata4 = new Kata5P2();
-        kata4.execute();
+    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+        Kata5P2 kata5 = new Kata5P2();
+        kata5.execute();
     }
     
-    public void input() throws IOException {
-        fileName = "C:\\Users\\Home\\Downloads\\emails.txt";
-        mailList = MailListReader.read(fileName);
+    public void input() throws ClassNotFoundException, SQLException {
+        fileName = "C:\\Users\\Home\\Documents\\NetBeansProjects\\Kata5P2\\KATA.sDB";
+        mailList = MailListReaderDDBB.read(fileName);
     }
     
     public void process() {
@@ -34,7 +34,7 @@ public class Kata5P2 {
         histoDisplay.execute();
     }
     
-    public void execute() throws IOException {
+    public void execute() throws ClassNotFoundException, SQLException {
         input();
         process();
         output();
